@@ -2,6 +2,7 @@ package pl.akademiaspecjalistowit.powtorzeniematerialu.meeting;
 
 import java.util.List;
 import java.util.Set;
+import java.util.UUID;
 
 public class MeetingService {
 
@@ -21,5 +22,8 @@ public class MeetingService {
 
     public List<Meeting> getAllMeetings() {
         return meetingRepository.findAll();
+    }
+    public void deleteMeeting(UUID meetingID) {
+        meetingRepository.deletedById(meetingID);
     }
 }

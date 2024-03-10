@@ -18,4 +18,8 @@ public class MeetingRepository {
     public List<Meeting> findAll() {
         return meetings.values().stream().toList();
     }
+    public void deletedById(UUID meetingId) {
+        meetings.remove(meetingId);
+    }
+
 }
