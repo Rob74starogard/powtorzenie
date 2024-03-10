@@ -99,6 +99,16 @@ public class Meeting {
                 Objects.equals(participantEmail, meeting.participantEmail) &&
                 Objects.equals(meetingDuration, meeting.meetingDuration);
     }
+    public void checkForParticipantsAlreadyScheduledMeetingsCollisions(List<Meeting> meetingsToCheck){
+        for (Meeting meetingByDate : meetingsToCheck) {
+            for (String email : this.getParticipantEmail()) {
+                if (meetingByDate.getParticipantEmail().contains(email)) {
+                    throw new MeetingException(
+                            String.format("Użytkownik %s ma już w tym czasie inne spotkanie", email));
+                }
+            }
+        }
+    }
 
     @Override
     public int hashCode() {
