@@ -1,19 +1,18 @@
 package pl.akademiaspecjalistowit.powtorzeniematerialu.meeting;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.time.LocalDate;
+import java.util.*;
 
 public class MeetingRepository {
 
-    private Map<Long, Meeting> meetings;
+    private Map<UUID, Meeting> meetings;
 
     public MeetingRepository() {
         meetings = new HashMap<>();
     }
 
     public void save(Meeting meeting) {
-        meetings.put((long) meetings.size(), meeting);
+        meetings.put((meeting.getMeetingId()), meeting);
     }
 
     public List<Meeting> findAll() {

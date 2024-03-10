@@ -4,9 +4,12 @@ import java.time.Duration;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 import java.util.UUID;
+
+
 
 public class Meeting {
 
@@ -30,7 +33,7 @@ public class Meeting {
 
     }
 
-    private LocalDateTime parseStringToDate(String dateString) {
+    private static LocalDateTime parseStringToDate(String dateString) {
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd:MM:yyyy HH:mm");
         try {
             return LocalDateTime.parse(dateString, formatter);
@@ -38,6 +41,7 @@ public class Meeting {
             throw new MeetingException("Podana data ma niewłaściwy format");
         }
     }
+
 
     public static Duration parseDurationFromString(String durationString) {
         String[] parts = durationString.split(":");
@@ -49,16 +53,36 @@ public class Meeting {
 
         return Duration.ofHours(hours).plus(Duration.ofMinutes(minutes));
     }
+    public UUID getMeetingId() {
+        return meetingId;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public LocalDateTime getDateAndTime() {
+        return dateAndTime;
+    }
+
+    public Set<String> getParticipantEmail() {
+        return Set.copyOf(participantEmail);
+    }
+
+    public Duration getMeetingDuration() {
+        return meetingDuration;
+    }
+
 
     @Override
     public String toString() {
         return "Meeting{" +
-            "meetingId=" + meetingId +
-            ", name='" + name + '\'' +
-            ", dateAndTime=" + dateAndTime +
-            ", participantEmail=" + participantEmail +
-            ", meetingDuration=" + meetingDuration +
-            '}';
+                "meetingId=" + meetingId +
+                ", name='" + name + '\'' +
+                ", dateAndTime=" + dateAndTime +
+                ", participantEmail=" + participantEmail +
+                ", meetingDuration=" + meetingDuration +
+                '}';
     }
 
     @Override
@@ -71,13 +95,15 @@ public class Meeting {
         }
         Meeting meeting = (Meeting) o;
         return Objects.equals(meetingId, meeting.meetingId) && Objects.equals(name, meeting.name) &&
-            Objects.equals(dateAndTime, meeting.dateAndTime) &&
-            Objects.equals(participantEmail, meeting.participantEmail) &&
-            Objects.equals(meetingDuration, meeting.meetingDuration);
+                Objects.equals(dateAndTime, meeting.dateAndTime) &&
+                Objects.equals(participantEmail, meeting.participantEmail) &&
+                Objects.equals(meetingDuration, meeting.meetingDuration);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(meetingId, name, dateAndTime, participantEmail, meetingDuration);
     }
+
+
 }
