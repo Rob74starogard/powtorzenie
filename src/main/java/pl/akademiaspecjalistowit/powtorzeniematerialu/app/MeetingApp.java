@@ -36,6 +36,7 @@ public class MeetingApp {
         System.out.println("1) Nowe spotkanie");
         System.out.println("2) Pokaż wszystkie spotkania");
         System.out.println("3) Usuń spotkanie");
+        System.out.println("4) Pokaż spotkania po email użytkownika");
         System.out.print("Wpisz komendę: ");
         String command = scanner.nextLine();
 
@@ -49,6 +50,9 @@ public class MeetingApp {
             case "3":
                 deleteMeeting(scanner);
                 break;
+            case"4":
+                showMeetingbuId(scanner);
+                break;
             case "exit":
                 System.out.println("Zamykanie aplikacji...");
                 return true;
@@ -57,6 +61,12 @@ public class MeetingApp {
                 break;
         }
         return false;
+    }
+
+    private void showMeetingbuId(Scanner scanner) {
+        System.out.println("Podaj email.użutkownika");
+        String email = scanner.next();
+        meetingService.showMeetingbyEmail(email);
     }
 
     private void showMeetings() {
@@ -103,4 +113,22 @@ public class MeetingApp {
         System.out.println("Usuwanie spotkań nie zostało jeszcze zaimplementowane");
     }
 
+    public void fill() {
+        String meetingName = "Test Meeting";
+        String meetingDateTimeString = "01:01:2024 12:00";
+        Set<String> participantEmails = new HashSet<>();
+        participantEmails.add("test@example.com");
+        String meetingDuration = "02:00";
+        meetingService.createNewMeeting(meetingName, meetingDateTimeString, participantEmails, meetingDuration);
+        String meetingName1 = "Test Meeting";
+        String meetingDateTimeString1 = "01:01:2025 12:00";
+        Set<String> participantEmails1 = Set.of("test123@example.com");
+        String meetingDuration1 = "02:00";
+        meetingService.createNewMeeting(meetingName1, meetingDateTimeString1, participantEmails1, meetingDuration1);
+        String meetingName2 = "Test Meeting";
+        String meetingDateTimeString2 = "01:01:2025 12:00";
+        Set<String> participantEmails2 = Set.of("robert123@example.com");
+        String meetingDuration2 = "02:00";
+        meetingService.createNewMeeting(meetingName2, meetingDateTimeString2, participantEmails2, meetingDuration2);
+    }
 }
