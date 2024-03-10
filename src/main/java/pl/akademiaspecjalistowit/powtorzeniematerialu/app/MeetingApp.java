@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Scanner;
 import java.util.Set;
+
 import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.Meeting;
 import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.MeetingService;
 
@@ -94,31 +95,13 @@ public class MeetingApp {
         }
 
         Meeting newMeeting =
-            meetingService.createNewMeeting(meetingName, meetingDateTimeString, participantEmail, meetingDuration);
+                meetingService.createNewMeeting(meetingName, meetingDateTimeString, participantEmail, meetingDuration);
 
         System.out.println("Spotkanie " + newMeeting + " zostało utworzone.");
     }
 
     private void deleteMeeting(Scanner scanner) {
         System.out.println("Usuwanie spotkań nie zostało jeszcze zaimplementowane");
-    }
-    public void fill() {
-        String meetingName = "Test Meeting";
-        String meetingDateTimeString = "01:01:2024 12:00";
-        Set<String> participantEmails = new HashSet<>();
-        participantEmails.add("test@example.com");
-        String meetingDuration = "02:00";
-        meetingService.createNewMeeting(meetingName, meetingDateTimeString, participantEmails, meetingDuration);
-        String meetingName1 = "Test Meeting";
-        String meetingDateTimeString1 = "01:01:2025 12:00";
-        Set<String> participantEmails1 = Set.of("test123@example.com");
-        String meetingDuration1 = "02:00";
-        meetingService.createNewMeeting(meetingName1, meetingDateTimeString1, participantEmails1, meetingDuration1);
-        String meetingName2 = "Test Meeting";
-        String meetingDateTimeString2 = "01:01:2025 12:00";
-        Set<String> participantEmails2 = Set.of("robert123@example.com");
-        String meetingDuration2 = "02:00";
-        meetingService.createNewMeeting(meetingName2, meetingDateTimeString2, participantEmails2, meetingDuration2);
     }
 
 
