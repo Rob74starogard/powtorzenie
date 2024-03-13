@@ -52,7 +52,7 @@ public class MeetingApp {
                 deleteMeeting(scanner);
                 break;
             case "4":
-                showMeetingbuId(scanner);
+                showMeetingbyMail(scanner);
                 break;
             case "exit":
                 System.out.println("Zamykanie aplikacji...");
@@ -64,8 +64,8 @@ public class MeetingApp {
         return false;
     }
 
-    private void showMeetingbuId(Scanner scanner) {
-        System.out.println("Podaj email.użutkownika");
+    private void showMeetingbyMail(Scanner scanner) {
+        System.out.println("Podaj email.użytkownika");
         String email = scanner.next();
         meetingService.showMeetingbyEmail(email);
     }
