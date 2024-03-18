@@ -1,22 +1,20 @@
 package pl.akademiaspecjalistowit.powtorzeniematerialu.app;
 
 import org.junit.After;
-import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.Meeting;
-import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.MeetingService;
+import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.MeetingServiceImpl;
 
 import java.io.ByteArrayOutputStream;
 import java.io.PrintStream;
 import java.util.List;
 import java.util.Set;
-import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 class MeetingAppTest {
-    private MeetingService meetingService;
+    private MeetingServiceImpl meetingService;
     private final ByteArrayOutputStream outContent = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
 
@@ -27,7 +25,7 @@ class MeetingAppTest {
 
     @BeforeEach
     void setUp() {
-        meetingService = new MeetingService();
+        meetingService = new MeetingServiceImpl();
 
     }
 

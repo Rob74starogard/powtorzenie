@@ -7,14 +7,17 @@ import java.util.Set;
 
 import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.Meeting;
 import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.MeetingService;
+import pl.akademiaspecjalistowit.powtorzeniematerialu.meeting.MeetingServiceImpl;
+import pl.akademiaspecjalistowit.powtorzeniematerialu.notification.NotService;
 
 public class MeetingApp {
 
     private MeetingService meetingService;
 
 
+
     public MeetingApp() {
-        this.meetingService = new MeetingService();
+        this.meetingService = new MeetingWithNotificationService(new MeetingServiceImpl(), new NotService());
     }
 
     public void run() {
